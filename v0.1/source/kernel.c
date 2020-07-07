@@ -124,7 +124,7 @@ void kmain(void)
 {
 
 	clear_screen();
-	kprint("TsugeraOS inited");
+	kprint("Kakadu inited write anything");
 	kprint_newline();
 	kprint_newline();
 
