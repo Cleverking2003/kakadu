@@ -6,3 +6,6 @@ kasm.o: source/kernel.asm
 
 kc.o: source/kernel.c source/kb_map.h
 	gcc -fno-stack-protector -m32 -c source/kernel.c -o bin/kc.o
+
+clean: 
+	rm kernel bin/*
