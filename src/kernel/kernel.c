@@ -27,10 +27,11 @@ int kStrlen(char* str) {
 	return i;
 }
 
-void kPrintStr(int position, char* string, char fg, char bg) {
+void kPrintStr(char* string, char x, char y, char fg, char bg) {
+	int position = y * 80 + x;
 	for(int i = 0; i < kStrlen(string); i++){
-		vgamode[(position+i)*2] = string[i];
-		vgamode[(position+i)*2+1] = VGA_COLOR(bg, fg);
+		vgamode[(position+i) * 2] = string[i];
+		vgamode[(position+i) * 2 + 1] = VGA_COLOR(bg, fg);
 	}
 }
 
@@ -42,7 +43,7 @@ void kClearScr() {
 
 void kmain(void) {
 	kClearScr();
-	kPrintStr(0, "Kakadu OS booted successfully!", VGA_WHITE, VGA_BLACK);
+	kPrintStr("Kakadu OS booted successfully!", 0, 0, VGA_WHITE, VGA_BLACK);
 
 	while(1);
 }
