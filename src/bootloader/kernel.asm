@@ -5,20 +5,12 @@ section .text
         dd 0x1BADB002              
         dd 0x00                    
         dd -(0x1BADB002+0x00)
-  gdtr: dd 0x0
 
 global start
 extern kmain
 
-; Protected mode entry
-cli
-lgdt [gdtr]
-mov eax, cr0 
-or al, 1
-mov cr0, eax
- 
-jmp 08h:start
- 
+;GRUB loads us into protected mode. Just set up the stack and jump to the kernel!
+
 start:
   cli
   mov esp, stack_space
