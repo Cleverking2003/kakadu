@@ -19,6 +19,8 @@ enum vga_colors {
 	VGA_WHITE
 };
 
+volatile char* const vgamode = (volatile char* const)0xB8000;
+
 int kStrlen(char* str) {
     int i;
     for (i = 0; str[i] != '\0'; ++i);
@@ -26,18 +28,15 @@ int kStrlen(char* str) {
 }
 
 void kPrintStr(int position, char* string, char fg, char bg) {
-	char* vgamode = (char*)0xB8000;
-	for(int i = 0; i < position*2; i++) *vgamode++;
 	for(int i = 0; i < kStrlen(string); i++){
-		*vgamode++ = string[i];
-		*vgamode++ = VGA_COLOR(bg, fg);
-
+		vgamode[(position+i)*2] = string[i];
+		vgamode[(position+i)*2+1] = VGA_COLOR(bg, fg);
 	}
 }
 
 void kClearScr() {
-	for(int i = 0; i < 132*60; i++){
-		kPrintStr(i, " ", VGA_BLACK, VGA_BLACK);
+	for(int i = 0; i < 80*25*2; i++){
+		vgamode[i] = 0;
 	}
 }
 
