@@ -22,7 +22,7 @@ Note that `make` outputs just pure binary, (if you want) you can create disk ima
 After this, you can run Kakadu on emulator (x86_64). For development and testing we recommend you to use `QEMU`. In `scripts` folder you can find out scripts for running `QEMU` with and without `GDB`.
 
 ## Licensing
-To be completed...
+This software is distributed under GPL v3
 
 ## Special greetings
 Special greetings, for our contibutors! You can help the project, becoming a contibutor yourself! We accept any help, just don't be shy 😀
