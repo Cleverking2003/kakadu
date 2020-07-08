@@ -1,0 +1,1 @@
+qemu-system-x86_64 -s -S -kernel target/kernel -append "root=/dev/hda" & gdb vmlinux
