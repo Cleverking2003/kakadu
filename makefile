@@ -5,7 +5,7 @@ kernel: kc.o kasm.o
 kasm.o: src/bootloader/kernel.asm
 	nasm -f elf32 src/bootloader/kernel.asm -o bin/kasm.o
 
-kc.o: src/kernel/kernel.c src/kernel/kb_map.h
+kc.o: src/kernel/kernel.c
 	mkdir -p bin/
 	gcc -fno-stack-protector -m32 -c src/kernel/kernel.c -o bin/kc.o
 
