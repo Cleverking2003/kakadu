@@ -4,10 +4,8 @@
 void kmain(void)
 {
 	kClearScr(1);
-	for(int i = 0; i<3;i++){
-		char* n = itoa(i,10);
-		kPrintStr(n);
-	}
+	kPrintStr("Kakadu OS booted sucessfully!");
+	kPrintStr("DEVELOPMENT VERSION!!!");
 
 	while(1);
 }
