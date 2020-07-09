@@ -32,4 +32,6 @@ void kClearScr(void){
 	for(int i = 0; i < SCR_WIDTH*SCR_HEIGHT*2; i++){
 		vgamem[i] = 0;
 	}
+	cur_x = 0;
+	cur_y = 0;
 }
