@@ -1,6 +1,6 @@
-#include "../lib/include/kconsole.h"
-#include "../lib/include/kconvert.h"
-#include "../lib/include/kmemory.h"
+#include "kconsole.h"
+#include "kconvert.h"
+#include "kmemory.h"
 void kmain(void)
 {
 	kClearScr();
