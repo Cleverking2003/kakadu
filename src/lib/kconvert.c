@@ -2,7 +2,7 @@
 
 char* itoa(int val, int base){
 	
-	static char buf[32] = {0};
+	static char buf[32] = {'0'};
 	
 	int i = 30;
 	

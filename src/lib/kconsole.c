@@ -1,47 +1,35 @@
 #include "include/kconsole.h"
-// Console history
-KLinkedList* history;
-unsigned historyInitialized = 0;
 
-int kStrlen(char* str){
-    int i;
-    for (i = 0; str[i] != '\0'; ++i);
-	return i;
-}
+//Coords of cursor
+char cur_x = 0, cur_y = 0;
+
 // Displays string
-void kDisplayStr(int x, int y, char* string, char attribs){
-	int position = y * SCR_WIDTH + x;
-	char* vgamode = (char*)0xB8000;
-	for(int i = 0; i < position*2; i++) vgamode++;
-	for(int i = 0; i < kStrlen(string); i++){
-		*vgamode++ = string[i];
-		*vgamode++ = attribs;
-	}
-
-}
-void kPrintStr(char* string){
-	if(!historyInitialized){
-		history = KLinkedList_Create();
-		historyInitialized = 1;
-	}
-
-	KLinkedList_Append(history, string);
-	
-	kClearScr(0);
-	for(int i = 0; i < KLinkedList_Length(history); i++) {
-		char* toWrite = (char*)KLinkedList_At(history,i);
-		kDisplayStr(0,i,toWrite,0b00000111);
-	}
-
-
-}
-
-// Clears screen visually (without history)
-void kClearScr(unsigned clearHistory){
-	for(int w = 0; w < SCR_WIDTH; w++){
-		for(int h = 0; h < SCR_HEIGHT; h++){
-			kDisplayStr(w,h," ",0);
+void kDisplayStr(char* string, char fg_color, char bg_color){
+	int position;
+	for(int i = 0; i < strlen(string); i++){
+		if (string[i] == '\n') {
+			cur_y++;
+			cur_x = 0;
+		}
+		else {
+			position = cur_y * SCR_WIDTH + cur_x++;
+			vgamem[position * 2] = string[i];
+			vgamem[position * 2 + 1] = VGA_COLOR(bg_color, fg_color);
+			if (cur_x >= SCR_WIDTH) {
+				cur_x %= SCR_WIDTH;
+				cur_y++;
+			}
+			if (cur_y >= SCR_HEIGHT) cur_y = 0;
 		}
 	}
-	if(clearHistory) KLinkedList_Clear(history);
+}
+
+void kPrintStr(char* string){
+	kDisplayStr(string, VGA_WHITE, VGA_BLACK);
+}
+
+void kClearScr(void){
+	for(int i = 0; i < SCR_WIDTH*SCR_HEIGHT*2; i++){
+		vgamem[i] = 0;
+	}
 }
