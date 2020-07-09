@@ -1,15 +1,22 @@
-#include "include/kconvert.h"
+#include "kconvert.h"
+#include "kmath.h"
+#include "kstring.h"
 
-char* itoa(int val, int base){
-	
-	static char buf[32] = {0};
-	
-	int i = 30;
-	
-	for(; val && i ; --i, val /= base)
-	
-		buf[i] = "0123456789abcdef"[val % base];
-	
-	return &buf[i+1];
-	
+char* itoa(int val, unsigned int base){
+	char isNeg = 0;
+	if (base > 16 || val == 0) return "0";
+	if (val < 0) {
+		isNeg = 1;
+		val = abs(val);
+	}
+	static char* str;
+	int i = 0;
+	while(val) {
+		str[i++] = "0123456789ABCDEF"[val % base];
+		val /= base;
+	}
+	if(isNeg) str[i++] = '-';
+	str[i] = '\0';
+	strrev(str);
+	return str;
 }

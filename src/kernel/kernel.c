@@ -1,11 +1,10 @@
-#include "../lib/include/kconsole.h"
-#include "../lib/include/kconvert.h"
-#include "../lib/include/kmemory.h"
+#include "kconsole.h"
+#include "kconvert.h"
+
 void kmain(void)
 {
-	kClearScr(1);
-	kPrintStr("Kakadu OS booted sucessfully!");
-	kPrintStr("DEVELOPMENT VERSION!!!");
-
+	kClearScr();
+	kPrintStr("Kakadu OS booted sucessfully!\n");
+	kPrintStr("DEVELOPMENT VERSION!!!\n");
 	while(1);
 }
