@@ -1,5 +1,7 @@
 #include "include/kmemory.h"
 
+chunk* head; //Head of our linked list
+chunk* tail; //Tail of our linked list
 
 void* malloc(unsigned int size){
 	void* block;
