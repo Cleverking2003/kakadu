@@ -8,7 +8,7 @@ At present, OS contains of:
 - Core library (like C std library, with some stuff needed for kernel)
 
 ## Build and usage
-> Warning: At present, this OS in development state! We do not recommend to use it on actual PC. (Or use it at your own risk 😉)
+> Warning: At present, this OS in development state! We do not recommend to use it on actual PC. (Or use it at your own risk)
 
 To build OS yourself you need:
 - Make
@@ -18,6 +18,7 @@ To build OS yourself you need:
 
 To initiate build you need to run `make`.  
 Note that `make` outputs just pure binary, (if you want) you can create disk image yourself.
+If you want a debug build, use `make DEBUG=1`
 
 After this, you can run Kakadu on emulator (x86_64). For development and testing we recommend you to use `QEMU`. In `scripts` folder you can find out scripts for running `QEMU` with and without `GDB`.
 
@@ -25,7 +26,7 @@ After this, you can run Kakadu on emulator (x86_64). For development and testing
 This software is distributed under GPL v3
 
 ## Special greetings
-Special greetings, for our contibutors! You can help the project, becoming a contibutor yourself! We accept any help, just don't be shy 😀
+Special greetings, for our contibutors! You can help the project, becoming a contibutor yourself! We accept any help, just don't be shy
 
 ## Contacts
 ### Whole project
@@ -38,4 +39,4 @@ Special greetings, for our contibutors! You can help the project, becoming a con
 - VK: https://vk.com/etoshapovalov
 - Github: https://github.com/etoshapovalov
 
-### Happy flying with Kakadu, we hope you don't crash! 😅
+### Happy flying with Kakadu, we hope you don't crash!
