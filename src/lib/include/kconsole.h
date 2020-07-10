@@ -32,8 +32,9 @@ enum vga_colors {
 
 static volatile char* const vgamem = (volatile char* const)0xb8000;
 
-void kDisplayStr(char* string, char fg_color, char bg_color);
+void kputc(char c);
+void kputs(char* string);
 void kClearScr(void);
-void kPrintStr(char* string);
+void set_color(char fg, char bg);
 
 #endif

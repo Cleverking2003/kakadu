@@ -4,7 +4,7 @@
 void kmain(void)
 {
 	kClearScr();
-	kPrintStr("Kakadu OS booted sucessfully!\n");
-	kPrintStr("DEVELOPMENT VERSION!!!\n");
+	kputs("Kakadu OS booted sucessfully!\n");
+	kputs("DEVELOPMENT VERSION!!!\n");
 	while(1);
 }
