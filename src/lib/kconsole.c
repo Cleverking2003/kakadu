@@ -1,9 +1,12 @@
 #include "kconsole.h"
+#include "kports.h"
 
 //Coords of cursor
 char cur_x = 0, cur_y = 0;
 // Default color
 char def_color = VGA_COLOR(VGA_BLACK, VGA_WHITE);
+// Is the cursor enabled?
+char cursor_enabled = 0;
 
 // Displays a char
 void kputc(char c) {
@@ -33,6 +36,7 @@ void kputs(char* string){
 		}
 		kputc(string[i]);
 	}
+	if(cursor_enabled) update_cursor(cur_x, cur_y);
 }
 
 // Clear the screen
@@ -48,4 +52,30 @@ void kClearScr(void){
 // Set the color
 void set_color(char fg, char bg) {
 	def_color = VGA_COLOR(bg, fg);
+}
+
+// Enable the cursor
+void enable_cursor(char cursor_start, char cursor_end) {
+	outb(0x3D4, 0x0A);
+	outb(0x3D5, (inb(0x3D5) & 0xC0) | cursor_start);
+ 
+	outb(0x3D4, 0x0B);
+	outb(0x3D5, (inb(0x3D5) & 0xE0) | cursor_end);
+	cursor_enabled = 1;
+}
+
+// Disable the cursor
+void disable_cursor(void) {
+	outb(0x3D4, 0x0A);
+	outb(0x3D5, 0x20);
+	cursor_enabled = 0;
+}
+
+// Update the cursor
+void update_cursor(char x, char y) {
+	short pos = y * SCR_WIDTH + x;
+	outb(0x3D4, 0x0F);
+	outb(0x3D5, (char) (pos & 0xFF));
+	outb(0x3D4, 0x0E);
+	outb(0x3D5, (char) ((pos >> 8) & 0xFF));
 }

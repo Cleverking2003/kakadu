@@ -1,7 +1,7 @@
 LIB_SOURCES := $(shell find src/lib -name '*.c')
 LIB_HEADERS := $(shell find src/lib/include -name '*.h' | sed 's/.*/-include &/')
 
-CFLAGS := -Wno-builtin-declaration-mismatch -fno-stack-protector -m32
+CFLAGS := -Wno-builtin-declaration-mismatch -fno-stack-protector -m32 -O2
 
 #Append asm bootloader and libraries to kernel
 kernel: kernel.o kasm.o
