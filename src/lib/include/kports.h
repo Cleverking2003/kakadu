@@ -3,12 +3,12 @@
 
 static inline char inb(short port) {
     char ret;
-    asm volatile ( "inb %1, %0" : "=a"(ret) : "Nd"(port) );
+    asm volatile ( "inb %1, %0" : "=a"(ret) : "dN"(port) );
     return ret;
 }
 
 static inline void outb(short port, char val) {
-    asm volatile ( "outb %0, %1" : : "a"(val), "Nd"(port) );
+    asm volatile ( "outb %0, %1" : : "a"(val), "dN"(port) );
 }
 
 #endif
