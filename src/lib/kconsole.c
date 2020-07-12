@@ -11,6 +11,7 @@ char cursor_enabled = 0;
 // Displays a char
 void kputc(char c) {
 	if (c == '\n') {
+		kputc('\r');
 		cur_y++;
 	}
 	else if (c == '\r') {
@@ -31,9 +32,6 @@ void kputc(char c) {
 // Displays string
 void kputs(char* string){
 	for(int i = 0; i < strlen(string); i++){
-		if (string[i] == '\n') {
-			kputc('\r');
-		}
 		kputc(string[i]);
 	}
 	if(cursor_enabled) update_cursor(cur_x, cur_y);
