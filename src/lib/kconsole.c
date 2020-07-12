@@ -27,6 +27,7 @@ void kputc(char c) {
 		}
 		if (cur_y >= SCR_HEIGHT) cur_y = 0;
 	}
+	if(cursor_enabled) update_cursor(cur_x, cur_y);
 }
 
 // Displays string
@@ -34,7 +35,6 @@ void kputs(char* string){
 	for(int i = 0; i < strlen(string); i++){
 		kputc(string[i]);
 	}
-	if(cursor_enabled) update_cursor(cur_x, cur_y);
 }
 
 // Clear the screen
