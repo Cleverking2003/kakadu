@@ -1,6 +1,8 @@
 #include "kconsole.h"
 #include "kconvert.h"
 
+void idt_init(void);
+
 void kmain(void) {
     kClearScr();
     idt_init();
