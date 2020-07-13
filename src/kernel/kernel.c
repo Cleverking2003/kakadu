@@ -1,10 +1,13 @@
 #include "kconsole.h"
 #include "kconvert.h"
 
+void idt_init(void);
+
 void kmain(void) {
-	kClearScr();
-	enable_cursor(0, SCR_HEIGHT);
-	kputs("Kakadu OS booted sucessfully!\n");
-	kputs("DEVELOPMENT VERSION!!!\n");
-	while(1);
+    kClearScr();
+    idt_init();
+    enable_cursor(0, SCR_HEIGHT-1);
+    kputs("Kakadu OS booted sucessfully!\n");
+    kputs("DEVELOPMENT VERSION!!!\n");
+    while(1) ;
 }

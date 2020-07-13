@@ -10,18 +10,21 @@ else
 	CFLAGS += -O2
 endif
 
-#Append asm bootloader and libraries to kernel
-kernel: kernel.o kasm.o
-	mkdir -p target
-	ld -m elf_i386 -T src/link.ld -o target/kernel bin/kasm.o bin/kernel.o bin/lib.a
+OBJS = kernel.o idt.o keyb.o handlers.o
+ASM_OBJS = start.o irq.o
 
-kasm.o: src/bootloader/kernel.asm
-	nasm -f elf32 src/bootloader/kernel.asm -o bin/kasm.o
+#Append asm bootloader and libraries to kernel
+kernel: $(OBJS) $(ASM_OBJS) lib.a
+	mkdir -p target
+	ld -m elf_i386 -T src/link.ld -o target/kernel bin/*.o bin/lib.a
+
+$(ASM_OBJS):
+	nasm -f elf32 src/kernel/$*.asm -o bin/$@
 
 #Kernel without libraries linked
-kernel.o: src/kernel/kernel.c lib.a
+$(OBJS):
 	mkdir -p bin/
-	gcc $(CFLAGS) -I src/lib/include -o bin/kernel.o -c src/kernel/kernel.c
+	gcc $(CFLAGS) -I src/lib/include -o bin/$@ -c src/kernel/$*.c
 #Libraries
 lib.a: src/lib/*
 	mkdir -p bin/lib
