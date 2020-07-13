@@ -13,10 +13,10 @@ extern kmain
 ;GRUB loads us into protected mode. Just set up the stack and jump to the kernel!
 
 start:
-  cli
-  mov esp, stack_space
-  call kmain
-  hlt
+    cli
+    mov esp, stack_space
+    call kmain
+    hlt
 
 section .bss
 resb 8192

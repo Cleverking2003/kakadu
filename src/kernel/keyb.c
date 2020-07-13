@@ -44,83 +44,16 @@ unsigned char keyboard_map[128] =
     0,	
 };
 
-void irq0_handler(void) {
-    outb(0x20, 0x20);
-}
-
 void irq1_handler(void) {
     unsigned char status;
-	char keycode;
+    char keycode;
 
-	outb(0x20, 0x20);
-
-	status = inb(KEYBOARD_STATUS_PORT);
-	if (status & 0x01) {
-		keycode = inb(KEYBOARD_DATA_PORT);
-		if(keycode < 0)
-			return;
-
-		if(keycode == 0x1c) {
-			kputc('\n');
-			return;
-		}
-
-		kputc(keyboard_map[(unsigned char) keycode]);
-	}
-}
-
-void irq2_handler(void) {
     outb(0x20, 0x20);
-}
 
-void irq3_handler(void) {
-    outb(0x20, 0x20);
-}
-
-void irq4_handler(void) {
-    outb(0x20, 0x20);
-}
-
-void irq5_handler(void) {
-    outb(0x20, 0x20);
-}
-
-void irq6_handler(void) {
-    outb(0x20, 0x20);
-}
-
-void irq7_handler(void) {
-    outb(0x20, 0x20);
-}
-
-void irq8_handler(void) {
-    outb(0x20, 0x20);
-}
-
-void irq9_handler(void) {
-    outb(0x20, 0x20);
-}
-
-void irq10_handler(void) {
-    outb(0x20, 0x20);
-}
-
-void irq11_handler(void) {
-    outb(0x20, 0x20);
-}
-
-void irq12_handler(void) {
-    outb(0x20, 0x20);
-}
-
-void irq13_handler(void) {
-    outb(0x20, 0x20);
-}
-
-void irq14_handler(void) {
-    outb(0x20, 0x20);
-}
-
-void irq15_handler(void) {
-    outb(0x20, 0x20);
+    status = inb(KEYBOARD_STATUS_PORT);
+    if (status & 0x01) {
+        keycode = inb(KEYBOARD_DATA_PORT);
+        if(keycode < 0) return;
+        kputc(keyboard_map[(unsigned char) keycode]);
+    }
 }

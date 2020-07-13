@@ -10,7 +10,7 @@ void strcpy(char *s, char *t) {
 int strlen(char* str){
     int i;
     for (i = 0; str[i] != '\0'; ++i);
-	return i;
+    return i;
 }
 
 char* strcat(char* s1, const char* s2) {
@@ -24,13 +24,13 @@ char* strcat(char* s1, const char* s2) {
 
 void strrev(char* str) {
     int i;
-	int j;
-	unsigned char a;
-	unsigned len = strlen(str);
-	for (i = 0, j = len - 1; i < j; i++, j--)
-	{
-		a = str[i];
-		str[i] = str[j];
-		str[j] = a;
-	}
+    int j;
+    unsigned char a;
+    unsigned len = strlen(str);
+    for (i = 0, j = len - 1; i < j; i++, j--)
+    {
+        a = str[i];
+        str[i] = str[j];
+        str[j] = a;
+    }
 }

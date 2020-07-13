@@ -10,7 +10,7 @@ else
 	CFLAGS += -O2
 endif
 
-OBJS = kernel.o idt.o keyb.o
+OBJS = kernel.o idt.o keyb.o handlers.o
 ASM_OBJS = start.o irq.o
 
 #Append asm bootloader and libraries to kernel
