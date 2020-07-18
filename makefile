@@ -10,8 +10,8 @@ else
 	CFLAGS += -O2
 endif
 
-OBJS = kernel.o idt.o keyb.o handlers.o
-ASM_OBJS = start.o irq.o
+OBJS = kernel.o idt.o keyb.o handlers.o gdt.o paging.o
+ASM_OBJS = start.o irq.o gdt_asm.o paging_enable.o
 
 #Append asm bootloader and libraries to kernel
 kernel: $(OBJS) $(ASM_OBJS) lib.a
@@ -24,7 +24,7 @@ $(ASM_OBJS):
 #Kernel without libraries linked
 $(OBJS):
 	mkdir -p bin/
-	gcc $(CFLAGS) -I src/lib/include -o bin/$@ -c src/kernel/$*.c
+	gcc $(CFLAGS) -I src/lib/include -I src/kernel/include -o bin/$@ -c src/kernel/$*.c
 #Libraries
 lib.a: src/lib/*
 	mkdir -p bin/lib
