@@ -34,9 +34,4 @@ Special greetings, for our contibutors! You can help the project, becoming a con
 - Email: Coming soon!
 - Donate: Coming soon!
 
-### Repository mantainer
-- Email: etoshapovalov@hey.com
-- VK: https://vk.com/etoshapovalov
-- Github: https://github.com/etoshapovalov
-
 ### Happy flying with Kakadu, we hope you don't crash!
