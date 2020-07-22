@@ -1,4 +1,4 @@
-# Kakadu - Open Source OS (REPOSITORY IS ABANDONED AND THEREFORE NOT MAINTAINED!!! NEVER COME AGAIN or create a fork if you really want to do something)
+# Kakadu - Open Source OS (REPOSITORY IS KEPT FOR ARCHIVAL PURPOSES!!! create a fork if you really want to do something)
 ![logo](https://i.ibb.co/dprhHhj/rsz-1rsz-11logo.png "Logo")
 ### Fast as flying bird!
 
